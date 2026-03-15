@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Owalla Family Insurance Calculator</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div id="wa-banner" style="background:#FEF3C7;border-bottom:2px solid #F59E0B;padding:14px 16px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+  <div style="font-size:15px;font-weight:700;color:#92400E;margin-bottom:4px;">&#9888; Open in Safari to use this calculator</div>
+  <div style="font-size:13px;color:#92400E;line-height:1.5;">WhatsApp blocks interactive features in HTML files.<br>Tap the <strong>share icon</strong> (&nbsp;&#8679;&nbsp;) at the top right &rarr; then tap <strong>"Open in Safari"</strong>.</div>
+</div>
+<div class="hero">
+  <div class="hbadge">AAR Health Insurance 2025/26</div>
+  <h1>Owalla Family<br><span>Insurance Calculator</span></h1>
+  <p>Select your name, pick your cover limits, and see your total annual premium.</p>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="body">
+
+      <!-- STEP 1: Member select - all options hard-coded in HTML -->
+      <div class="sec">
+        <div class="lbl">Step 1 &mdash; Who are you?</div>
+        <select id="ms" onchange="onMember(this.value)">
+          <option value="">-- Select your name --</option>
+          <option value="BILHA RISPER AKINYI">BILHA RISPER AKINYI</option>
+          <option value="Benson Angienda Kowala">Benson Angienda Kowala</option>
+          <option value="Billian Rachael">Billian Rachael</option>
+          <option value="David Odhiambo Owalla">David Odhiambo Owalla</option>
+          <option value="EMANUELLE ADHIAMBO ODHIAMBO">EMANUELLE ADHIAMBO ODHIAMBO</option>
+          <option value="Elizabeth Adhiambo Owalla">Elizabeth Adhiambo Owalla</option>
+          <option value="Erick Omondi">Erick Omondi</option>
+          <option value="Evan Obed Munga">Evan Obed Munga</option>
+          <option value="Hellen Nyakind Owala">Hellen Nyakind Owala</option>
+          <option value="Job Ouma">Job Ouma</option>
+          <option value="KENNAS OKEYOH OWALLAH">KENNAS OKEYOH OWALLAH</option>
+          <option value="Kawaka Bill Jezreel">Kawaka Bill Jezreel</option>
+          <option value="Kennedy Odongo">Kennedy Odongo</option>
+          <option value="Lameck Odiwuor Kowala">Lameck Odiwuor Kowala</option>
+          <option value="Mary Adoyo Owallah">Mary Adoyo Owallah</option>
+          <option value="Mercy Akinyi Angienda">Mercy Akinyi Angienda</option>
+          <option value="Oliver Arthur Owalla">Oliver Arthur Owalla</option>
+          <option value="PEREZ ANYANGO OWALLAH">PEREZ ANYANGO OWALLAH</option>
+          <option value="PHILIP OLUOCH ODIWUOR">PHILIP OLUOCH ODIWUOR</option>
+          <option value="RUTH ACHIENG OWALLA">RUTH ACHIENG OWALLA</option>
+          <option value="Rachel Adhiambo Odiwuor">Rachel Adhiambo Odiwuor</option>
+          <option value="Salmon Ouma Okongo">Salmon Ouma Okong'o</option>
+          <option value="Sharon Apiyo Ben">Sharon Apiyo Ben</option>
+          <option value="VIVIANNE ADHIAMBO OUMA">VIVIANNE ADHIAMBO OUMA</option>
+          <option value="Victor">Victor</option>
+        </select>
+        <div class="finfo" id="fi">
+          <div class="ftop">
+            <div class="fsize" id="fs"></div>
+            <div class="fcount" id="fc"></div>
+          </div>
+          <div id="da"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: ALL pills pre-rendered in HTML. JS only toggles .hide class -->
+      <div class="sec">
+        <div class="lbl">Step 2 &mdash; Choose your cover limits</div>
+        <div class="cgrid">
+
+          <!-- INPATIENT PILLS -->
+          <div class="cpanel" id="ipp">
+            <div class="ph"><div class="pt">Inpatient</div><div class="pb ip">HOSPITAL</div></div>
+            <div class="pills">
+              <!-- data-lim = limit value, data-min = min dep required, data-v = premium for each dep level M,M+1..M+6 -->
+              <button class="pill" id="ip-10M" onclick="selectPill('ip',10000000,this)" data-amt-0="48851" data-amt-1="82861" data-amt-2="102305" data-amt-3="116449" data-amt-4="127791" data-amt-5="137322" data-amt-6="146852">10M</button>
+              <button class="pill" id="ip-9M"  onclick="selectPill('ip',9000000,this)"  data-amt-0="47920" data-amt-1="81285" data-amt-2="100618" data-amt-3="114691" data-amt-4="125981" data-amt-5="135475" data-amt-6="144969">9M</button>
+              <button class="pill" id="ip-8M"  onclick="selectPill('ip',8000000,this)"  data-amt-0="46011" data-amt-1="78053" data-amt-2="96885"  data-amt-3="110602" data-amt-4="121615" data-amt-5="130882" data-amt-6="140149">8M</button>
+              <button class="pill" id="ip-7M"  onclick="selectPill('ip',7000000,this)"  data-amt-0="45646" data-amt-1="77437" data-amt-2="96371"  data-amt-3="110173" data-amt-4="121260" data-amt-5="130594" data-amt-6="139929">7M</button>
+              <button class="pill" id="ip-6M"  onclick="selectPill('ip',6000000,this)"  data-amt-0="43989" data-amt-1="74628" data-amt-2="93129"  data-amt-3="106623" data-amt-4="117468" data-amt-5="126605" data-amt-6="135742">6M</button>
+              <button class="pill" id="ip-5M"  onclick="selectPill('ip',5000000,this)"  data-amt-0="42458" data-amt-1="63594" data-amt-2="76924"  data-amt-3="92346"  data-amt-4="110277" data-amt-5="131218" data-amt-6="133267">5M</button>
+              <button class="pill" id="ip-4M"  onclick="selectPill('ip',4000000,this)"  data-amt-0="40589" data-amt-1="63435" data-amt-2="76762"  data-amt-3="92154"  data-amt-4="110021" data-amt-5="130858" data-amt-6="137396">4M</button>
+              <button class="pill" id="ip-3M"  onclick="selectPill('ip',3000000,this)"  data-amt-0="36698" data-amt-1="60216" data-amt-2="72899"  data-amt-3="87518"  data-amt-4="99709"  data-amt-5="118538" data-amt-6="129041">3M</button>
+              <button class="pill" id="ip-2M"  onclick="selectPill('ip',2000000,this)"  data-amt-0="32808" data-amt-1="56996" data-amt-2="69037"  data-amt-3="82883"  data-amt-4="94399"  data-amt-5="112166" data-amt-6="126931">2M</button>
+              <button class="pill" id="ip-1M"  onclick="selectPill('ip',1000000,this)"  data-amt-0="25396" data-amt-1="48998" data-amt-2="59461"  data-amt-3="71393"  data-amt-4="79538"  data-amt-5="94317"  data-amt-6="96806">1M</button>
+              <button class="pill" id="ip-500K" onclick="selectPill('ip',500000,this)" data-amt-0="23429" data-amt-1="39682" data-amt-2="48253"  data-amt-3="57943"  data-amt-4="65836"  data-amt-5="77900"  data-amt-6="85122">500K</button>
+            </div>
+            <div class="psel" id="ipl">Tap a limit to select</div>
+          </div>
+
+          <!-- OUTPATIENT PILLS -->
+          <!-- data-max = max dep supported (0=M only, 1=M+1, etc). Pills with dep > data-max get hidden -->
+          <div class="cpanel" id="opp">
+            <div class="ph"><div class="pt">Outpatient</div><div class="pb op">CLINIC / GP</div></div>
+            <div class="pills">
+              <button class="pill" id="op-250K" onclick="selectPill('op',250000,this)" data-max="6" data-amt-0="48816" data-amt-1="92493" data-amt-2="111262" data-amt-3="129466" data-amt-4="147040" data-amt-5="164259" data-amt-6="180823">250K</button>
+              <button class="pill" id="op-200K" onclick="selectPill('op',200000,this)" data-max="6" data-amt-0="48446" data-amt-1="75680" data-amt-2="90816"  data-amt-3="108979" data-amt-4="130774" data-amt-5="156929" data-amt-6="188314">200K</button>
+              <button class="pill" id="op-150K" onclick="selectPill('op',150000,this)" data-max="6" data-amt-0="45552" data-amt-1="68978" data-amt-2="82773"  data-amt-3="99329"  data-amt-4="119194" data-amt-5="143032" data-amt-6="150000">150K</button>
+              <button class="pill" id="op-100K" onclick="selectPill('op',100000,this)" data-max="4" data-amt-0="38337" data-amt-1="58052" data-amt-2="74663"  data-amt-3="86597"  data-amt-4="99874">100K</button>
+              <button class="pill" id="op-75K"  onclick="selectPill('op',75000,this)"  data-max="3" data-amt-0="33217" data-amt-1="50299" data-amt-2="62360"  data-amt-3="73932">75K</button>
+              <button class="pill" id="op-50K"  onclick="selectPill('op',50000,this)"  data-max="2" data-amt-0="26431" data-amt-1="40023" data-amt-2="48029">50K</button>
+            </div>
+            <div class="psel" id="opl">Tap a limit to select</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 3: Results -->
+      <div class="sec" style="margin-bottom:0">
+        <div class="lbl">Step 3 &mdash; Your premium</div>
+        <div id="ra">
+          <div class="empty"><div class="ei">&#128737;</div>Select your name and at least one cover limit to see your premium.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <p class="note">Rates from AAR Health 2025/26 schedule. Outpatient rates include 2.5% adjustment. Greyed-out limits are unavailable for your family size. For guidance only &mdash; confirm with your AAR agent before enrolling.<br><br><strong>Owalla Family &middot; January 2026</strong></p>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
